@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from DAOGenderService WSDL service -->
+
+  <service name="DAOGender" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://dao"/>
+      <parameter name="wsdlServiceElement" value="DAOGenderService"/>
+      <parameter name="schemaQualified" value="http://dao,http://modelos"/>
+      <parameter name="wsdlServicePort" value="DAOGender"/>
+      <parameter name="className" value="dao.DAOGender"/>
+      <parameter name="wsdlPortType" value="DAOGender"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://dao" name="remove" qname="operNS:remove" soapAction="">
+        <parameter xmlns:pns="http://dao" xmlns:tns="http://modelos" qname="pns:gender" type="tns:MODGender"/>
+      </operation>
+      <operation xmlns:operNS="http://dao" xmlns:retNS="http://dao" xmlns:rtns="http://modelos" name="get" qname="operNS:get" returnQName="retNS:getReturn" returnType="rtns:MODGender" soapAction="">
+        <parameter xmlns:pns="http://dao" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:long"/>
+      </operation>
+      <operation xmlns:operNS="http://dao" xmlns:retNS="http://dao" xmlns:rtns="http://dao" xmlns:tns="http://dao" name="list" qname="operNS:list" returnQName="retNS:listReturn" returnType="rtns:ArrayOf_xsd_anyType" returnItemQName="tns:item" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://dao" name="save" qname="operNS:save" soapAction="">
+        <parameter xmlns:pns="http://dao" xmlns:tns="http://modelos" qname="pns:gender" type="tns:MODGender"/>
+      </operation>
+      <operation xmlns:operNS="http://dao" name="update" qname="operNS:update" soapAction="">
+        <parameter xmlns:pns="http://dao" xmlns:tns="http://modelos" qname="pns:gender" type="tns:MODGender"/>
+      </operation>
+      <parameter name="allowedMethods" value="update save get remove list"/>
+
+      <typeMapping xmlns:ns="http://dao" qname="ns:&gt;update" type="java:dao.Update" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://dao" qname="ns:&gt;get" type="java:dao.Get" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://dao" qname="ns:&gt;updateResponse" type="java:dao.UpdateResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://dao" qname="ns:&gt;listResponse" type="java:dao.ListResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://dao" qname="ns:&gt;removeResponse" type="java:dao.RemoveResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://modelos" qname="ns:MODGender" type="java:modelos.MODGender" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <arrayMapping xmlns:ns="http://dao" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema" qname="ns:ArrayOf_xsd_anyType" type="java:java.lang.Object[]" innerType="cmp-ns:anyType" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://dao" qname="ns:&gt;getResponse" type="java:dao.GetResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://dao" qname="ns:&gt;save" type="java:dao.Save" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://dao" qname="ns:&gt;saveResponse" type="java:dao.SaveResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://dao" qname="ns:&gt;remove" type="java:dao.Remove" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://dao" qname="ns:&gt;list" type="java:dao.List" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

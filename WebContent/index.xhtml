@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>CrazyDora</title>
+    </h:head>
+    <h:body>
+        <h:panelGrid columns="4" cellpadding="5">  
+            <p:layout fullPage="true">  
+
+                
+                <p:layoutUnit position="north" size="100" >  
+                    <h:outputText value="CrazyDora" />  
+                </p:layoutUnit>  
+
+                <p:layoutUnit position="south" size="100" >  
+                    <h:outputText value="Equipe xxx 2013." />  
+                </p:layoutUnit>  
+
+                <p:layoutUnit position="west" size="200" collapsible="true">  
+                    <p:growl id="messages"/>  
+                    <p:menu>  
+                        <p:submenu label="Menu">  
+                            <p:menuitem value="Cliente" outcome="/customer/index" icon="ui-icon-star"/>  
+                            <p:menuitem value="Generos" outcome="/gender/index" icon="ui-icon-star"/>
+                            <p:menuitem value="Filmes" outcome="/movie/index" icon="ui-icon-star"/>
+                            <p:menuitem value="Midias" outcome="/media/index" icon="ui-icon-star"/>
+                            <p:menuitem value="Locação" outcome="/location/index" icon="ui-icon-star"/>
+                        </p:submenu>  
+                    </p:menu>  
+                </p:layoutUnit>  
+
+                <p:layoutUnit position="center">  
+                    <h:form>  
+                          <ui:insert name="center"></ui:insert>  
+
+                    </h:form>  
+                </p:layoutUnit>  
+
+            </p:layout>               
+        </h:panelGrid>
+    </h:body>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
+
+		<property name="hibernate.connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+
+		<property name="hibernate.connection.url">
+			jdbc:mysql://localhost/crazydora
+		</property>
+ 
+		<property name="hibernate.connection.username">
+			root
+		</property>
+
+		<property name="hibernate.connection.password">
+			teste
+		</property>
+
+
+		<property name="hibernate.hbm2ddl.auto">update</property>
+
+		<mapping class="modelos.MODCustomer" />
+		<mapping class="modelos.MODPerson" />
+		<mapping class="modelos.MODGender" />
+		<mapping class="modelos.MODLocation" />
+		<mapping class="modelos.MODLocationItens" />
+		<mapping class="modelos.MODMedia" />
+		<mapping class="modelos.MODMovie" />
+		<mapping class="modelos.MODOperator" />
+		<mapping class="modelos.MODStatus" />
+	</session-factory>
+</hibernate-configuration>

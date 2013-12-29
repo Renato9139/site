@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="../index.xhtml">  
+        <ui:define name="center">
+            <h:form>
+
+                <p:panelGrid columns="2">  
+                    <f:facet name="header">  
+                        Customer
+                    </f:facet>  
+                    <h:outputLabel value="Code: " />  
+                    <h:outputLabel value="#{BeanCustomer.customer.codPerson}" />  
+
+                    <h:outputLabel for="name" value="Name" />  
+                    <p:inputText value="#{BeanCustomer.customer.name}" /> 
+
+                    <h:outputLabel for="address" value="Address" />  
+                    <p:inputText value="#{BeanCustomer.customer.address}" /> 
+
+                    <h:outputLabel for="phonenumber" value="PhoneNumber" />  
+                    <p:inputText value="#{BeanCustomer.customer.phoneNumber}" /> 
+
+                    <h:outputLabel for="cpf" value="CPF *" />  
+                    <p:inputText value="#{BeanCustomer.customer.cpf}" />  
+
+                    <h:outputLabel for="identity" value="Identity *" />  
+                    <p:inputText value="#{BeanCustomer.customer.identit}" /> 
+
+                    <f:facet name="footer">  
+                        <h:commandButton action="#{BeanCustomer.insert}" value="Salvar" />
+                    </f:facet>
+                </p:panelGrid> 
+            </h:form>
+        </ui:define>  
+    </ui:composition>  
+</html>

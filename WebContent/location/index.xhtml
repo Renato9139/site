@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="../index.xhtml">
+	<ui:define name="center">
+		<h:form>
+
+			<p:panelGrid columns="2">
+				<f:facet name="header">  
+                        Location
+                    </f:facet>
+
+
+
+				<h:outputLabel value="Code: " />
+				<h:outputLabel value="#{BeanLocation.location.codLocation}" />
+
+				<h:outputLabel value="Código do Cliente" />
+				<p:inputText value="#{BeanLocation.location.customer.codPerson}" />
+
+				<h:outputLabel value="Nome" />
+				<h:outputLabel value="#{BeanLocation.location.customer.name}" />
+
+				<h:outputLabel value="Código da Midia" />
+				<p:inputText value="#{BeanLocation.locationiten.media.codMedia}" />
+
+				<h:outputLabel value="Data Devolução" />
+				<p:inputText value="#{BeanLocation.location.dateDevolution}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</p:inputText>
+
+				<h:commandButton action="#{BeanLocation.insertlocationiten}"
+					value="+" />
+
+				<p:dataTable var="locationiten" paginator="true"
+					value="#{BeanLocation.location.locationitens}">
+					<p:column headerText="Código">
+						<h:outputText value="#{locationiten.media.codMedia}" />
+					</p:column>
+					<p:column headerText="Filme">
+						<h:outputText value="#{locationiten.media.movie.description}" />
+					</p:column>
+					<p:column headerText="Status">
+						<h:outputText value="#{locationiten.media.status.description}" />
+					</p:column>
+				</p:dataTable>
+
+				<f:facet name="footer">
+					<h:commandButton action="#{BeanLocation.insert}" value="Salvar" />
+					<h:commandButton action="#{BeanLocation.clean}" value="Novo" />
+				</f:facet>
+			</p:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
